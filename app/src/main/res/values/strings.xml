@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">HelloWorld</string>
+
+    <string name="orange_text_view">This is an orange TextView</string>
+    <string name="green_text_view">This is an green TextView</string>
+    <string name="blue_text_view">This is an blue TextView</string>
+    <string name="blue_button">This is an blue Button</string>
+    <string name="green_button">This is an green Button</string>
 </resources>
