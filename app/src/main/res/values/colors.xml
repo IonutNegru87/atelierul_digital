@@ -7,4 +7,7 @@
     <color name="orange">#FFA500</color>
     <color name="green">#90EE90</color>
     <color name="blue">#ADD8E6</color>
+    <color name="purple">#800080</color>
+
+    <string name="test_string">ceva</string>
 </resources>

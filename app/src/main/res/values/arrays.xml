@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="api_versions">
+        <item>Cupcake</item>
+        <item>Pie</item>
+    </string-array>
+</resources>
