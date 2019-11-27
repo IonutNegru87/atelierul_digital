@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HelloWorld</string>
+    <string name="app_name">GAD Android Fundamentals</string>
 
     <string name="orange_text_view">This is an orange TextView</string>
     <string name="green_text_view">This is an green TextView</string>
@@ -20,4 +20,20 @@ Fames ac turpis egestas sed. Proin sed libero enim sed faucibus. Cursus turpis m
     </string>
 
     <string name="api_version_prompt">Choose Android version:</string>
+    <string name="title_activity_first">FirstActivity</string>
+    <string name="start_for_result">Start For Result</string>
+    <string name="enter_your_name">Enter your name!</string>
+    <string name="send_to_receiver">SEND to Receiver</string>
+    <string name="waiting_for_message">Waiting for message…</string>
+    <string name="label_send_to_receiver">Send the text provided in the input field to the receiver activity.</string>
+    <string name="label_start_for_result">Send an hardcoded text and wait for the result from the receiver activity.</string>
+
+    <string name="title_activity_receiver">Receiver</string>
+    <string name="title_activity_sender">Sender</string>
+    <string name="invalid_response_message">Invalid response message!</string>
+    <string name="hint_response_message">Enter your response</string>
+    <string name="title_respond">Respond</string>
+    <string name="error_receiving_sender">Could not process sender name!</string>
+
+    <string name="hello_sender">Hello, %1$s! </string>
 </resources>
