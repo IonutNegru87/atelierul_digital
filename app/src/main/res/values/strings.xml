@@ -30,10 +30,12 @@ Fames ac turpis egestas sed. Proin sed libero enim sed faucibus. Cursus turpis m
 
     <string name="title_activity_receiver">Receiver</string>
     <string name="title_activity_sender">Sender</string>
+    <string name="title_activity_recycler_view">RecyclerView</string>
     <string name="invalid_response_message">Invalid response message!</string>
     <string name="hint_response_message">Enter your response</string>
     <string name="title_respond">Respond</string>
     <string name="error_receiving_sender">Could not process sender name!</string>
 
     <string name="hello_sender">Hello, %1$s! </string>
+    <string name="inner_click">Inner Click</string>
 </resources>

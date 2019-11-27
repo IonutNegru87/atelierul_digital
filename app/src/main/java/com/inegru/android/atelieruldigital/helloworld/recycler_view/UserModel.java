@@ -25,4 +25,14 @@ class UserModel {
     String getLastName() {
         return lastName;
     }
+
+    /**
+     * Get the full name of the user as: "[FIRST_NAME] [LAST_NAME]".
+     *
+     * @return The full name of the user.
+     */
+    @NonNull
+    String getFullName() {
+        return firstName + " " + lastName;
+    }
 }

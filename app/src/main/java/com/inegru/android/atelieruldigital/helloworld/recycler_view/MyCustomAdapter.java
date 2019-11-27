@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
@@ -22,8 +23,15 @@ class MyCustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
     @NonNull
     private final List<UserModel> items = new ArrayList<>();
 
+    @Nullable
+    private OnItemClickListener itemClickListener;
+
     MyCustomAdapter(List<UserModel> items) {
         this.items.addAll(items);
+    }
+
+    void setItemClickListener(@Nullable OnItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
     }
 
     void addUser(UserModel user) {
@@ -50,19 +58,30 @@ class MyCustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
         View view = inflater.inflate(R.layout.item_list_layout, parent, false);
 
         // Return our custom view holder
-        return new CustomViewHolder(view);
+        return new CustomViewHolder(view, position -> {
+            UserModel user = items.get(position);
+            // Pass the data to the top click listener
+            if (itemClickListener != null && user != null) {
+                itemClickListener.onItemClicked(view, user);
+            }
+        });
     }
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
-        UserModel item = items.get(position);
-        holder.tvFirstName.setText(item.getFirstName());
-        holder.tvLastName.setText(item.getLastName());
+        holder.bind(items.get(position), itemClickListener);
     }
 
     @Override
     public int getItemCount() {
         // Mandatory for indicating the number of items that should be displayed
         return items.size();
+    }
+
+    /**
+     * Contract for click actions on list items.
+     */
+    interface OnItemClickListener {
+        void onItemClicked(@NonNull View view, @NonNull UserModel user);
     }
 }

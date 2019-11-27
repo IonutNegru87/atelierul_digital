@@ -12,9 +12,15 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity
-            android:name=".week5_activities_intents.ReceiverActivity"
-            android:label="@string/title_activity_receiver" />
+        <!--        <activity-->
+        <!--            android:name=".recycler_view.RecyclerActivity"-->
+        <!--            android:label="@string/title_activity_receiver">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.MAIN" />-->
+
+        <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
 
         <activity
             android:name=".week5_activities_intents.SenderActivity"
@@ -26,6 +32,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".week5_activities_intents.ReceiverActivity"
+            android:label="@string/title_activity_receiver" />
     </application>
 
 </manifest>

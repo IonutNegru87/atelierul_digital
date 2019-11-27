@@ -1,9 +1,12 @@
 package com.inegru.android.atelieruldigital.helloworld.recycler_view;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.widget.Toast;
 
 import com.inegru.android.atelieruldigital.helloworld.R;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,11 +35,11 @@ public class RecyclerActivity extends AppCompatActivity {
 
         // Initialize the custom Adapter for the Recycler View
         adapter = new MyCustomAdapter(RecyclerViewUtils.getData());
-
+        adapter.setItemClickListener(
+            (v, user) -> Toast.makeText(v.getContext(), "Selected " + user.getFullName(), Toast.LENGTH_SHORT)
+                         .show());
         // Set the adapter on the RecyclerView
         rv.setAdapter(adapter);
-
-
     }
 
     // Method interacting with a button
