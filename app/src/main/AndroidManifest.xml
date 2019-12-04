@@ -12,30 +12,33 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <!--        <activity-->
-        <!--            android:name=".recycler_view.RecyclerActivity"-->
-        <!--            android:label="@string/title_activity_receiver">-->
-        <!--            <intent-filter>-->
-        <!--                <action android:name="android.intent.action.MAIN" />-->
-
-        <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-        <!--            </intent-filter>-->
-        <!--        </activity>-->
+        <activity
+            android:name=".recycler_view.RecyclerActivity"
+            android:label="@string/title_activity_receiver" />
 
         <activity
             android:name=".week5_activities_intents.SenderActivity"
             android:label="@string/title_activity_sender"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/AppTheme.NoActionBar" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+        <!-- WEEK 5 -->
         <activity
             android:name=".week5_activities_intents.ReceiverActivity"
             android:label="@string/title_activity_receiver" />
+
+
+        <!-- WEEK 6 -->
+        <activity android:name=".week6.fragments.DynamicFragmentActivity" />
+        <activity android:name=".week6.fragments.StaticFragmentActivity" />
+        <activity
+            android:name=".week6.drawer.DrawerActivity"
+            android:label="@string/title_activity_drawer"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
