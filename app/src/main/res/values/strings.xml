@@ -55,4 +55,9 @@ Fames ac turpis egestas sed. Proin sed libero enim sed faucibus. Cursus turpis m
     <string name="change_fragment">change</string>
     <string name="add_fragment">add</string>
     <string name="menu_group_communicate">Communicate</string>
+    <string name="title_activity_botom_nav">BotomNavActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="check_permissions">Check permissions</string>
 </resources>

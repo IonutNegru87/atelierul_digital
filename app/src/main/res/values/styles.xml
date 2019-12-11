@@ -1,11 +1,16 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Blue">
+        <item name="colorPrimary">#0000FF</item>
+        <item name="colorPrimaryDark">#900000FF</item>
+        <item name="colorAccent">#CCFF00</item>
     </style>
 
     <style name="GreenButton" parent="Widget.AppCompat.Button.Colored">
@@ -34,5 +39,56 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="TextViewTitle">
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:textColor">@color/orange</item>
+    </style>
+
+    <style name="TextAppearanceTitle" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="AppTheme.TextViewSubtitle">
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textColor">@color/purple</item>
+    </style>
+
+    <style name="AppTheme.TextAppearanceSubtitle"
+        parent="TextAppearance.MaterialComponents.Subtitle1">
+    </style>
+
+    <style name="CardviewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="cardElevation">16dp</item>
+        <item name="cardBackgroundColor">@color/colorAccent</item>
+
+    </style>
+
+    <!-- -->
+    <style name="Widget"/>
+
+
+    <style name="Widget.MaterialButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:minHeight">64dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="Widget.MaterialTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline5
+        </item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Widget.MaterialTitle.Center">
+        <item name="android:gravity">center</item>
+    </style>
 
 </resources>

@@ -3,6 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.inegru.android.atelieruldigital.helloworld">
 
+    <!--
+    Normal permissions that are granted automatically at install.
+    -->
+    <!-- Allows applications to open network sockets. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Allows applications to access information about networks. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- Allows applications to access information about Wi-Fi networks. -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!-- Allows applications to connect to paired bluetooth devices. -->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <!-- Allows applications to discover and pair bluetooth devices. -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <!-- Allows applications to change Wi-Fi connectivity state. -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+
+    <!--
+    Dangerous permissions that require user interaction. Should manually check if the
+    permissions is allowed or not each time a component requires the permissions.
+    -->
+    <!-- Allows an app to access approximate location. -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- Allows an app to access the physical camera of the device. -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- Allows an application to read from external storage. -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- Allows an application to write to external storage. -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -11,23 +40,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
         <activity
             android:name=".recycler_view.RecyclerActivity"
             android:label="@string/title_activity_receiver" />
-
         <activity
             android:name=".week5_activities_intents.SenderActivity"
             android:label="@string/title_activity_sender"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <!-- WEEK 5 -->
+            android:theme="@style/AppTheme.NoActionBar" /> <!-- WEEK 5 -->
         <activity
             android:name=".week5_activities_intents.ReceiverActivity"
-            android:label="@string/title_activity_receiver" />
-
-
-        <!-- WEEK 6 -->
+            android:label="@string/title_activity_receiver" /> <!-- WEEK 6 -->
         <activity android:name=".week6.fragments.DynamicFragmentActivity" />
         <activity android:name=".week6.fragments.StaticFragmentActivity" />
         <activity
@@ -36,9 +58,19 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- WEEK 7 -->
+        <activity
+            android:name=".week7.CustomThemeActivity"
+            android:theme="@style/AppTheme.Blue" /> <!-- Custom theme set for this activity -->
+        <activity
+            android:name=".week7.BottomNavActivity"
+            android:label="@string/title_activity_botom_nav" />
+        <activity android:name=".week7.PermissionsActivity" />
     </application>
 
 </manifest>

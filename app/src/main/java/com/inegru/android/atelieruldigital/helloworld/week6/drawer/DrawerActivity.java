@@ -1,5 +1,6 @@
 package com.inegru.android.atelieruldigital.helloworld.week6.drawer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -8,6 +9,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.inegru.android.atelieruldigital.helloworld.R;
+import com.inegru.android.atelieruldigital.helloworld.week7.CustomThemeActivity;
+import com.inegru.android.atelieruldigital.helloworld.week7.PermissionsActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -35,7 +38,7 @@ public class DrawerActivity extends AppCompatActivity {
 
         // Floating action button for add action
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(this::addNewTrip);
+        fab.setOnClickListener(this::goToWeek7);
 
         // Setup navigation drawer layout: the whole area of the drawer
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -69,6 +72,11 @@ public class DrawerActivity extends AppCompatActivity {
     private void addNewTrip(View view) {
         Snackbar.make(view, "Add new trip", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
+    }
+
+    private void goToWeek7(View view){
+        Intent intent = new Intent(this, PermissionsActivity.class);
+        startActivity(intent);
     }
 
     @Override
