@@ -1,14 +1,18 @@
 package com.inegru.android.atelieruldigital.helloworld.week7;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.inegru.android.atelieruldigital.helloworld.R;
 
 import java.util.ArrayList;
@@ -18,7 +22,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 /**
  * Note that permissions above Android 6.0 (API 23) the permissions are requested at runtime
@@ -28,17 +31,91 @@ public class PermissionsActivity extends AppCompatActivity {
 
     private static final String TAG = PermissionsActivity.class.getSimpleName();
     private static final int REQUEST_ALL_PERMISSIONS = 1;
+    private static final int REQUEST_CAMERA_PERMISSION = 2;
+    private static final int REQUEST_LOCATION_PERMISSION = 3;
+    private static final int REQUEST_STORAGE_PERMISSION = 4;
     private TextView tvPermissionsStatus;
-    private Button btnCheckPermissions;
 
-    private static void requestPermission(@NonNull Activity activity,
-                                          @NonNull String[] permissions) {
+    /**
+     * Root of the layout of this Activity.
+     */
+    private View rootLayout;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_permissions);
+
+        rootLayout = findViewById(R.id.root);
+
+        tvPermissionsStatus = findViewById(R.id.tvPermissionsStatus);
+        Button btnCheckPermissions = findViewById(R.id.btnCheckPermissions);
+        btnCheckPermissions.setOnClickListener(v -> checkPermissions(PermissionsActivity.this));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Auto check for permissions when resuming the activity
+        checkPermissions(this, false);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_CAMERA_PERMISSION) {
+            // Received permission result for camera permission.
+            Log.i(TAG, "Received response for Camera permission request.");
+
+            // Check if the only required permission has been granted
+            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Camera permission has been granted, preview can be displayed
+                Log.i(TAG, "CAMERA permission has now been granted.");
+                Snackbar.make(rootLayout, R.string.permission_available_camera,
+                              Snackbar.LENGTH_SHORT).show();
+            } else {
+                Log.i(TAG, "CAMERA permission was NOT granted.");
+                Snackbar.make(rootLayout, R.string.permissions_not_granted,
+                              Snackbar.LENGTH_SHORT).show();
+            }
+        } else if (requestCode == REQUEST_LOCATION_PERMISSION) {
+            // Received permission result for location permission.
+            Log.i(TAG, "Received response for Location permission request.");
+
+            // Check if the only required permission has been granted
+            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Location permission has been granted
+                Log.i(TAG, "Location permission has now been granted.");
+                Snackbar.make(rootLayout, R.string.permission_available_location,
+                              Snackbar.LENGTH_SHORT).show();
+            } else {
+                Log.i(TAG, "CAMERA permission was NOT granted.");
+                Snackbar.make(rootLayout, R.string.permissions_not_granted,
+                              Snackbar.LENGTH_SHORT).show();
+            }
+        } else if (requestCode == REQUEST_ALL_PERMISSIONS) {
+            // TODO: 11/12/19 Check if all permissions are granted
+
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    private void requestPermission(@NonNull Activity activity,
+                                   @NonNull String[] permissions) {
         ActivityCompat.requestPermissions(activity, permissions, REQUEST_ALL_PERMISSIONS);
     }
 
-    private static boolean isPermissionGranted(@NonNull Context context,
-                                               @NonNull String permission) {
-        return ContextCompat.checkSelfPermission(context, permission)
+    private void requestPermission(@NonNull Activity activity,
+                                   @NonNull String permission,
+                                   int requestCode) {
+        ActivityCompat.requestPermissions(activity, new String[]{permission}, requestCode);
+    }
+
+    private boolean isPermissionGranted(@NonNull String permission) {
+        return ActivityCompat.checkSelfPermission(this, permission)
             == PackageManager.PERMISSION_GRANTED;
     }
 
@@ -74,7 +151,7 @@ public class PermissionsActivity extends AppCompatActivity {
             // Loop through all the permissions
             for (String permission : requestedPermissions) {
                 // Check if the permission was granted or not
-                final boolean isPermissionGranted = isPermissionGranted(context, permission);
+                final boolean isPermissionGranted = isPermissionGranted(permission);
                 Log.i(TAG,
                       "checkDeclaredPermissions: " + permission + " is " + (isPermissionGranted
                           ? "granted" : "not granted"));
@@ -93,7 +170,7 @@ public class PermissionsActivity extends AppCompatActivity {
     private void updatePermissionsStatus(List<String> permissionsNotGranted) {
         Log.i(TAG, "updatePermissionsStatus: updating status...");
         if (permissionsNotGranted.isEmpty()) {
-            tvPermissionsStatus.setText("All permissions are granted.");
+            tvPermissionsStatus.setText(R.string.all_permissions_granted);
         } else {
             StringBuilder builder = new StringBuilder(
                 "The following permissions were not granted:");
@@ -106,22 +183,61 @@ public class PermissionsActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_permissions);
-
-        tvPermissionsStatus = findViewById(R.id.tvPermissionsStatus);
-        btnCheckPermissions = findViewById(R.id.btnCheckPermissions);
-        btnCheckPermissions.setOnClickListener(v -> checkPermissions(PermissionsActivity.this));
+    public void checkCameraPermission(@NonNull View view) {
+        final String permission = Manifest.permission.CAMERA;
+        if (isPermissionGranted(permission)) {
+            Toast.makeText(this, "Camera permission already granted.", Toast.LENGTH_SHORT).show();
+        } else {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                                                                    permission)) {
+                Snackbar.make(rootLayout, R.string.permission_camera_rationale,
+                              Snackbar.LENGTH_INDEFINITE)
+                        .setAction(android.R.string.ok,
+                                   v -> requestPermission(PermissionsActivity.this, permission,
+                                                          REQUEST_LOCATION_PERMISSION))
+                        .show();
+            } else {
+                requestPermission(PermissionsActivity.this, permission, REQUEST_LOCATION_PERMISSION);
+            }
+        }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+    public void checkLocationPermission(@NonNull View view) {
+        final String permission = Manifest.permission.ACCESS_COARSE_LOCATION;
+        if (isPermissionGranted(permission)) {
+            Toast.makeText(this, "Location permission already granted.", Toast.LENGTH_SHORT).show();
+        } else {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                                                                    permission)) {
+                Snackbar.make(rootLayout, R.string.permission_location_rationale,
+                              Snackbar.LENGTH_INDEFINITE)
+                        .setAction(android.R.string.ok,
+                                   v -> requestPermission(PermissionsActivity.this, permission,
+                                                          REQUEST_CAMERA_PERMISSION))
+                        .show();
+            } else {
+                requestPermission(PermissionsActivity.this, permission, REQUEST_CAMERA_PERMISSION);
+            }
+        }
+    }
 
-        // Auto check for permissions when resuming the activity
-        checkPermissions(this, false);
+    public void checkStoragePermission(@NonNull View view) {
+        // When the write permission is granted, the read is automatically granted also
+        final String permission = Manifest.permission.WRITE_EXTERNAL_STORAGE;
+        if (isPermissionGranted(permission)) {
+            Toast.makeText(this, "Storage permission already granted.", Toast.LENGTH_SHORT).show();
+        } else {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                                                                    permission)) {
+                Snackbar.make(rootLayout, R.string.permission_storage_rationale,
+                              Snackbar.LENGTH_INDEFINITE)
+                        .setAction(android.R.string.ok,
+                                   v -> requestPermission(PermissionsActivity.this, permission,
+                                                          REQUEST_STORAGE_PERMISSION))
+                        .show();
+            } else {
+                requestPermission(PermissionsActivity.this, permission, REQUEST_STORAGE_PERMISSION);
+            }
+        }
     }
 }

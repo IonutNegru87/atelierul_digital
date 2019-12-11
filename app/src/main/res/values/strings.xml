@@ -59,5 +59,16 @@ Fames ac turpis egestas sed. Proin sed libero enim sed faucibus. Cursus turpis m
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="check_permissions">Check permissions</string>
+    <string name="check_permissions">Check all permissions</string>
+    <string name="all_permissions_granted">All permissions are granted.</string>
+    <string name="permission_available_camera">Camera Permission has been granted.</string>
+    <string name="permission_camera_rationale">Camera permission is needed to show the camera preview.</string>
+    <string name="permission_available_location">Location Permission has been granted.</string>
+    <string name="permission_location_rationale">Location permission is needed to identify user location.</string>
+    <string name="permission_available_storage">Storage Permission has been granted.</string>
+    <string name="permission_storage_rationale">Storage permission is needed to access external storage.</string>
+    <string name="permissions_not_granted">Permissions were not granted.</string>
+    <string name="check_camera_permission">Check Camera permission</string>
+    <string name="check_location_permission">Check Location permission</string>
+    <string name="check_storage_permission">Check Storage permission</string>
 </resources>

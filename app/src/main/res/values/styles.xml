@@ -71,7 +71,7 @@
 
 
     <style name="Widget.MaterialButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginTop">0dp</item>
         <item name="android:minHeight">64dp</item>
         <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingTop">8dp</item>
@@ -81,7 +81,7 @@
     </style>
 
     <style name="Widget.MaterialTitle" parent="Widget.AppCompat.TextView">
-        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:layout_marginTop">24dp</item>
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline5
         </item>
         <item name="android:textSize">20sp</item>

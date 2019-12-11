@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="8dp">
 
     <TextView
         android:id="@+id/tvPermissionsStatus"
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnCheckStoragePermission"
         tools:text="Status for permissions" />
 
     <Button
@@ -24,5 +25,40 @@
         android:text="@string/check_permissions"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPermissionsStatus" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnCheckCameraPermission"
+        style="@style/Widget.MaterialButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="checkCameraPermission"
+        android:text="@string/check_camera_permission"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnCheckPermissions" />
+
+    <Button
+        android:id="@+id/btnCheckLocationPermission"
+        style="@style/Widget.MaterialButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="checkLocationPermission"
+        android:text="@string/check_location_permission"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnCheckCameraPermission" />
+
+    <Button
+        android:id="@+id/btnCheckStoragePermission"
+        style="@style/Widget.MaterialButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="checkStoragePermission"
+        android:text="@string/check_storage_permission"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnCheckLocationPermission" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
