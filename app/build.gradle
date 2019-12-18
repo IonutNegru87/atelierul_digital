@@ -37,6 +37,12 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.google.android.material:material:1.0.0'
 
+    // Networking
+    implementation 'com.squareup.retrofit2:retrofit:2.7.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.0'
+    /* For network debugging */
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+
     // Usually not needed. Add this only if not available by default
     implementation "androidx.recyclerview:recyclerview:1.1.0"
 }

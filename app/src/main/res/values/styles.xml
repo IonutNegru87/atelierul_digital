@@ -34,6 +34,7 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -55,10 +56,9 @@
     </style>
 
     <style name="AppTheme.TextAppearanceSubtitle"
-        parent="TextAppearance.MaterialComponents.Subtitle1">
-    </style>
+        parent="TextAppearance.MaterialComponents.Subtitle1"/>
 
-    <style name="CardviewStyle" parent="Widget.MaterialComponents.CardView">
+    <style name="CardViewStyle" parent="Widget.MaterialComponents.CardView">
         <item name="android:layout_margin">8dp</item>
         <item name="android:padding">8dp</item>
         <item name="cardElevation">16dp</item>
@@ -67,7 +67,7 @@
     </style>
 
     <!-- -->
-    <style name="Widget"/>
+    <style name="Widget" />
 
 
     <style name="Widget.MaterialButton" parent="Widget.MaterialComponents.Button">

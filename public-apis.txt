@@ -1,0 +1,3 @@
+https://github.com/public-apis/public-apis
+
+* https://jsonplaceholder.typicode.com/
