@@ -10,6 +10,13 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]
+            }
+        }
     }
     buildTypes {
         release {
@@ -42,6 +49,15 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.7.0'
     /* For network debugging */
     implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+
+    // Storage DB
+    def room_version = "2.2.3"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // For preference management
+    def preference_version = "1.1.0"
+    implementation "androidx.preference:preference:$preference_version"
 
     // Usually not needed. Add this only if not available by default
     implementation "androidx.recyclerview:recyclerview:1.1.0"
